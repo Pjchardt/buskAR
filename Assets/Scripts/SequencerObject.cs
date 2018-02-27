@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SequencerObject : InteractableObject
+public class SequencerObject : MonoBehaviour
 {
     public enum Notes { C, Dsharp, G, F, Asharp };
     public int row;
@@ -38,7 +38,6 @@ public class SequencerObject : InteractableObject
     /// If we are the viewer, we need to intialize with our own variables and functions.
     /// </summary>
     public GameObject SequencerVizPrefab;
-    public GameObject ClickEffect;
     GameObject vizObject;
     Animation anim;
 
@@ -55,7 +54,7 @@ public class SequencerObject : InteractableObject
 
         elevationAngle = Random.Range(-Mathf.PI, Mathf.PI);
         inclinationLevel = Random.Range(-Mathf.PI, Mathf.PI); //should this be (0 - elevation Level?)
-        radius = Random.Range(.2f, .3f);
+        radius = .2f; //we will update radius when we get our row and column
 
         UpdateObject(null, 1f);
     }
@@ -72,7 +71,7 @@ public class SequencerObject : InteractableObject
         Debug.Log(origin);
         Vector3 v = Vector3.zero;
         v.x = origin.x + radius * Mathf.Sin(elevationAngle * delta) * Mathf.Cos(inclinationLevel * delta);
-        v.y = origin.y + radius * Mathf.Sin(elevationAngle * delta) * Mathf.Sin(inclinationLevel * delta);
+        v.y = origin.y + inclinationLevel;
         v.z = origin.z + radius * Mathf.Cos(elevationAngle * delta);
         vizObject.transform.position = v;
     }
@@ -92,15 +91,6 @@ public class SequencerObject : InteractableObject
     {
         if (!isOn)
             vizObject.SetActive(false);
-    }
-
-    public override void OnClick()
-    {
-        base.OnClick();
-
-        GameObject obj = Instantiate(ClickEffect);
-        obj.transform.position = transform.position;
-        Destroy(obj, 3f);
     }
 #endregion
 
@@ -126,6 +116,9 @@ public class SequencerObject : InteractableObject
         row = r;
         column = c;
         isOn = b;
+        radius = .2f + (r * .025f);
+        elevationAngle = -Mathf.PI + ((2f * Mathf.PI) / 8f) * c;
+        inclinationLevel = -.2f + (.1f * r);
         Busker.Instance.AddObject(this);
     }
 

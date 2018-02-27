@@ -2,11 +2,8 @@
 // Based on "HelloARController.cs". 
 //-----------------------------------------------------------------------
 
-using System.Collections.Generic;
 using GoogleARCore;
 using UnityEngine;
-using UnityEngine.Rendering;
-using GoogleARCore.HelloAR;
 using UnityEngine.UI;
 
 /// <summary>
@@ -37,6 +34,7 @@ public class ARCore_ViewerController : MonoBehaviour
     /// <summary>
     /// Variables for on hover events
     /// </summary>
+    public SingleUnityLayer InteractableLayer;
     InteractableObject hoverObject = null;
     InteractableObject prevObject = null;
 
@@ -54,6 +52,7 @@ public class ARCore_ViewerController : MonoBehaviour
     {
         PlaceVisualizationButton.onClick.AddListener(OnButtonPressed_SetVisualization);
         RemoveVisualizationButton.onClick.AddListener(OnButtonPressed_RemoveVisualization);
+        RemoveVisualizationButton.gameObject.SetActive(false);
         placementVisualizationObject = Instantiate(PlacementVisualizationPrefab);
     }
 
@@ -78,19 +77,29 @@ public class ARCore_ViewerController : MonoBehaviour
 
         if (!visualizationInitialized)
         {
-            placementVisualizationObject.transform.position = FirstPersonCamera.transform.position + FirstPersonCamera.transform.forward;
+            Vector3 target = FirstPersonCamera.transform.position + FirstPersonCamera.transform.forward * .5f;
+            placementVisualizationObject.transform.position = Vector3.Lerp(placementVisualizationObject.transform.position, target, Time.deltaTime * 4f);
             return;
         }
 
-        Ray ray = FirstPersonCamera.ScreenPointToRay(Input.GetTouch(0).position);
-        RaycastHit hit;
-
-        if (Physics.SphereCast(ray, .05f, out hit, Mathf.Infinity, LayerMask.GetMask("AR")))
+        if (Input.touchCount > 0)
         {
-            InteractableObject temp = hit.collider.gameObject.GetComponent<InteractableObject>();
+            foreach (Touch t in Input.touches)
+            {
+                if (t.phase == TouchPhase.Began)
+                {
+                    Ray ray = FirstPersonCamera.ScreenPointToRay(t.position);
+                    RaycastHit hit;
 
-            if (temp != null)
-                ProcessInteraction(temp);
+                    if (Physics.SphereCast(ray, .025f, out hit, Mathf.Infinity, InteractableLayer.Mask))
+                    {
+                        InteractableObject temp = hit.collider.gameObject.GetComponent<InteractableObject>();
+
+                        if (temp != null)
+                            temp.OnClick();
+                    }
+                }
+            }
         }
     }
 
@@ -113,38 +122,6 @@ public class ARCore_ViewerController : MonoBehaviour
         PlaceVisualizationButton.gameObject.SetActive(true);
         RemoveVisualizationButton.gameObject.SetActive(false);
         visualizationInitialized = false;
-    }
-
-    void ProcessInteraction(InteractableObject i)
-    {
-        if (hoverObject != null)
-        {
-            if (hoverObject == i)
-                hoverObject.OnHoverStay();
-            else
-            {
-                hoverObject.OnHoverExit();
-                i.OnHoverEnter();
-                hoverObject = i;
-            }
-        }
-        else
-        {
-            i.OnHoverEnter();
-            hoverObject = i;
-        }
-
-        //Process clicks
-        if (Input.touches.Length > 0)
-        {
-            foreach (Touch t in Input.touches)
-            {
-                if (t.phase == TouchPhase.Began)
-                {
-                    i.OnClick();
-                }
-            }
-        }
     }
 
     /// <summary>

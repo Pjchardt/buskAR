@@ -14,7 +14,7 @@ public class ParticleObject
         elevationAngle = Random.Range(-Mathf.PI, Mathf.PI);
         inclinationLevel = Random.Range(-Mathf.PI, Mathf.PI);
         obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        obj.transform.localScale = Vector3.one * .025f;
+        obj.transform.localScale = Vector3.one * .01f;
         obj.GetComponent<Renderer>().material = m;
         obj.layer = LayerMask.NameToLayer("AR");
     }
@@ -60,10 +60,10 @@ public class ParticleTest : MonoBehaviour
 
         if (Busker.Instance != null)
         {
-            radius = Busker.Instance.valueOne / 880f;
-            scale = Mathf.Clamp((Busker.Instance.valueTwo / 880f) / 5f, .0001f, 1f);
-            timeScale = (((Busker.Instance.valueTempo - 30) / 1970f) * 4f) - 2f; //What about reversing direction? We will need to accumulate our own timeValue
-            yRotationScale = (Busker.Instance.valuePitchRange - 50) / 1550 * 2f;
+            radius = (Busker.Instance.valueOne / 880f) * .1f;
+            scale = Mathf.Clamp((Busker.Instance.valueTwo / 880f) / 5f, .0001f, 1f) * .1f;
+            timeScale = (((Busker.Instance.valueTempo - 30) / 1970f) * 4f) - 2f; 
+            yRotationScale = (Busker.Instance.valuePitchRange - 50) / 1550;
         }
 
         timeOfSimulation += Time.deltaTime * timeScale;
