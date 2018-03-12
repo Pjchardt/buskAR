@@ -5,7 +5,7 @@ Music performance app for busker with a networked augmented reality visualizatio
 ## Project
 buskAR is part of my ongoing project around AR. The main website is at <a href="https://oeoe.club">oeoe.club</a>.
 
-buskAR is nuilt around the idea of a new form of performance using AR. The core idea involves networking to sync data between data, then allowing the sync to drive experiences congtrolled by one or a group of people. The project is open source under the MIT license so folks interested in networked AR have a starting point. 
+buskAR is one exploration into the idea of new forms of performance using AR. The core idea involves networking to sync data between devices, then allowing the sync to drive experiences congtrolled by one person or a group of people. The project is open source under the MIT license so folks interested in networked AR have a starting point. 
 
 I do need to clean up the code, as well as implement some more features. Let me know if you have any questions or feedback!
 
