@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4416517646297298}
   - component: {fileID: 114225499758194904}
   - component: {fileID: 114316095905522416}
+  - component: {fileID: 82688846702373818}
   m_Layer: 0
   m_Name: SequencerObject
   m_TagString: Untagged
@@ -41,6 +42,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82688846702373818
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1006750165125966}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114225499758194904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,12 +133,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a1e35da284ae342b09099d279a4275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onHoverMaterial: {fileID: 2100000, guid: e362228b9d73ddc43948755391a35893, type: 2}
+  Notes:
+  - {fileID: 8300000, guid: 17b5974b035b1d44eae2c5210acc85c7, type: 3}
+  - {fileID: 8300000, guid: 5120752581e399042a73bc31f4812335, type: 3}
+  - {fileID: 8300000, guid: 584e41423c660f446874e6a1d2b472ba, type: 3}
+  - {fileID: 8300000, guid: f7267dcaedb09114bbfa64542e89fbac, type: 3}
+  - {fileID: 8300000, guid: 68d3eb0b78c394247aab0eba8af125d2, type: 3}
   row: 0
   column: 0
   SequencerVizPrefab: {fileID: 1350395380724506, guid: ac45fd11a6d5cdc458671c47e935e092,
-    type: 2}
-  ClickEffect: {fileID: 1169381216493476, guid: 53cabae196296bf4b81fec3a53b119f9,
     type: 2}
 --- !u!114 &114316095905522416
 MonoBehaviour:

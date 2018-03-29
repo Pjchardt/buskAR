@@ -8,6 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 35c34949bdb60494791bbac52a35c006
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ARCoreViewerTest.unity
     guid: 10fb207ef811aeb40a2e5c4aa76b0eca
