@@ -1,6 +1,26 @@
+![alt text](https://pjchardt.github.io/images/buskAR.jpg)
 # buskAR
+Music performance app for busker with a networked augmented reality visualization for viewers. Uses <a href="https://unity3d.com/">Unity</a>, <a href="https://www.photonengine.com/en/PUN">Photon Networking</a>, <a href="https://developers.google.com/ar/discover/">ARCore</a>, and <a href="https://enzienaudio.com/">Heavy</a>. Buskar plays a sequencer, viewers connect over the network and see an AR visualization of the music in space. 
 
-TODO: 
-  -Add setup instructions
-  -Add info about project and future plans
-  -Add links to additional info
+## Project
+buskAR is part of my ongoing project around AR. The main website is at <a href="https://oeoe.club">oeoe.club</a>.
+
+buskAR is one exploration into the idea of new forms of performance using AR. The core idea involves networking to sync data between devices, then allowing the sync to drive experiences congtrolled by one person or a group of people. The project is open source under the MIT license so folks interested in networked AR have a starting point. 
+
+I do need to clean up the code, as well as implement some more features. Let me know if you have any questions or feedback!
+
+## Getting Started
+
+1. Download or pull the project.
+2. Open Unity (last built with 2017.1.f3)
+3. Put in your own <a href="https://doc.photonengine.com/en-us/realtime/current/getting-started/obtain-your-app-id">Photon App ID</a>
+4. Build out to android phone that supports ARCore
+5. Run Master from pc or phone and create a room name, then connect.
+6. Connect phone as viewer with same room name.
+7. Play around on master and view visualization on viewer(s) after placing visualization root.
+
+## Moving Forward
+
+- Implement syncing of beat over network to remove latency from visualization
+- Finish visualization 
+- Hook up sliders to sound
