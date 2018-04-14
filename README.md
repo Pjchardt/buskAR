@@ -14,10 +14,10 @@ Let me know if you have any questions or feedback!
 1. Download or pull the project.
 2. Open Unity (last built with 2017.1.f3)
 3. Put in your own <a href="https://doc.photonengine.com/en-us/realtime/current/getting-started/obtain-your-app-id">Photon App ID</a>
-  3.1 In Unity open Window->Photon Unity Networking -> Pun Wizard
-  3.2 Select Locate Photon Server Settings
-  3.3 If using Photon Servers, set Hosting to Photon Cloud
-  3.4 Enter your App ID after following the above link to creating a Photon account
+  - In Unity open Window->Photon Unity Networking -> Pun Wizard
+  - Select Locate Photon Server Settings
+  - If using Photon Servers, set Hosting to Photon Cloud
+  - Enter your App ID after following the above link to creating a Photon account
 4. Build out to android phone that supports ARCore
 5. Run Master from pc or phone and create a room name, then connect.
 6. Connect phone as viewer with same room name.
